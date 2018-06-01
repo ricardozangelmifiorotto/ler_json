@@ -1,0 +1,18 @@
+fun main(args: Array<String>) {
+
+Function setup() {
+    
+    loadJSON("https://s3-sa-east-1.amazonaws.com/pontotel-docs/data.json");
+}
+
+Function gotData(data){
+    println(data);
+    
+    
+    
+    Function draw(){
+        
+    }
+    
+}
+}
