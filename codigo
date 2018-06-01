@@ -1,7 +1,7 @@
 
     JSONParser jsonparser = new JSONParser();
     String str;
-    JSONObject jobj = null;
+    JSONObject url = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -12,13 +12,13 @@
 
         @Override
         protected String doInBackground(String... arg0) {
-            jobj = jsonparser.makeHttpRequest(": https://s3-sa-east-1.amazonaws.com/pontotel-docs/data.json");
+            url = jsonparser.makeHttpRequest(": https://s3-sa-east-1.amazonaws.com/pontotel-docs/data.json");
 
             // Verificar resposta do json
-            Log.d("Login attempt", jobj.toString());
+            Log.d("Login attempt", url.toString());
 
             try {
-                str = jobj.getString("title");
+                str = url.getString("title");
             } catch (JSONException json) {
                 json.printStackTrace();
             }
