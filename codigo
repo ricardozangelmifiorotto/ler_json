@@ -1,18 +1,26 @@
-fun main(args: Array<String>) {
 
-Function setup() {
-    
-    loadJSON("https://s3-sa-east-1.amazonaws.com/pontotel-docs/data.json");
-}
+    JSONParser jsonparser = new JSONParser();
+    String str;
+    JSONObject jobj = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+        new retrievedata().execute();
 
-Function gotData(data){
-    println(data);
-    
-    
-    
-    Function draw(){
-        
     }
-    
-}
+
+        @Override
+        protected String doInBackground(String... arg0) {
+            jobj = jsonparser.makeHttpRequest(": https://s3-sa-east-1.amazonaws.com/pontotel-docs/data.json");
+
+            // Verificar resposta do json
+            Log.d("Login attempt", jobj.toString());
+
+            try {
+                str = jobj.getString("title");
+            } catch (JSONException json) {
+                json.printStackTrace();
+            }
+            return str;
 }
